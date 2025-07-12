@@ -34,8 +34,11 @@ Thumbs.db
 *.suo
 
 # Ignore user-specific .json config files
-
 *.json
+
+# But allow important Unity package files
+!Packages/manifest.json
+!Packages/packages-lock.json
 .vs/
 !.vsconfig
 ProjectSettings/
