@@ -1,0 +1,42 @@
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+MemoryCaptures/
+*.csproj
+*.pidb
+*.sln
+*.userprefs
+*.unityproj
+
+# JetBrains Rider project files
+.idea/
+
+# VSCode project files
+.vscode/
+
+# Unity's package cache
+[Pp]ackageCache/
+
+# Mac-specific files
+.DS_Store
+
+# Windows-specific files
+Thumbs.db
+
+# Ignore Visual Studio Index files
+*.vsidx
+
+# Ignore Visual Studio Solution User Options files
+*.suo
+
+# Ignore user-specific .json config files
+
+*.json
+.vs/
+!.vsconfig
+ProjectSettings/
+
