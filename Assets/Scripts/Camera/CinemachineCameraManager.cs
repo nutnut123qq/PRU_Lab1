@@ -13,7 +13,8 @@ public class CinemachineCameraManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); // Keep this manager persistent
+            DontDestroyOnLoad(gameObject);
+            SceneManager.sceneLoaded += OnSceneLoaded;
         }
         else
         {
@@ -23,6 +24,20 @@ public class CinemachineCameraManager : MonoBehaviour
 
         FindCinemachineCamera();
     }
+
+    private void OnDestroy()
+    {
+        if (Instance == this)
+        {
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+        }
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        FindCinemachineCamera();
+    }
+
     private void Update()
     {
         /*if (SceneManager.GetActiveScene().name.Equals("EndMenu"))
@@ -31,22 +46,10 @@ public class CinemachineCameraManager : MonoBehaviour
             return;
         }*/
     }
+
     private void FindCinemachineCamera()
     {
         cinemachineCam = FindObjectsByType<CinemachineCamera>(FindObjectsSortMode.None).FirstOrDefault();
-
-        if (cinemachineCam != null)
-        {
-            // Disable extra AudioListeners
-            AudioListener[] listeners = FindObjectsByType<AudioListener>(FindObjectsSortMode.None);
-            if (listeners.Length > 1)
-            {
-                for (int i = 1; i < listeners.Length; i++)
-                {
-                    Destroy(listeners[i]); // Destroy extra listeners
-                }
-            }
-        }
     }
 
     public void SetFollowTarget(Transform target)
